@@ -10,8 +10,8 @@ public interface CustomerInterface {
 		//for signup use @RequestBody
 		public String signUp(Customer customer);
 		
-		//this is during 
-		public int getUserEmail(String email);
+		//this is during sign up
+		public boolean getUserEmail(String email);
 		//for signin use @PathVariable
 		public String signIn(String userName, String password);
 		
