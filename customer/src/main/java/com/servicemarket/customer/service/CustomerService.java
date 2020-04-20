@@ -1,8 +1,11 @@
 package com.servicemarket.customer.service;
 
+import org.springframework.stereotype.Service;
+
 import com.servicemarket.customer.dto.Customer;
 import com.servicemarket.customer.interfaces.CustomerInterface;
 
+@Service
 public class CustomerService implements CustomerInterface{
 
 	@Override
@@ -12,9 +15,9 @@ public class CustomerService implements CustomerInterface{
 	}
 
 	@Override
-	public int getUserEmail(String email) {
+	public boolean getUserEmail(String email) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
