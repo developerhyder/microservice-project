@@ -1,28 +1,23 @@
 package com.servicemarket.service.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
-public class Service {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+public class ServiceCopy {
+
+	
 	Integer serviceId;
 	String name;
 	Integer cost;
 	String description;
 	
-	public Service(Integer serviceId, String name, Integer cost, String description) {
+	public ServiceCopy(Integer serviceId, String name, Integer cost, String description) {
 		super();
 		this.serviceId = serviceId;
 		this.name = name;
 		this.cost = cost;
 		this.description = description;
 	}
-	public Service() {
+	public ServiceCopy() {
 		
 	}
 	public Integer getServiceId() {
@@ -51,3 +46,4 @@ public class Service {
 	}
 	
 }
+

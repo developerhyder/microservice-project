@@ -1,11 +1,11 @@
-package com.servicemarket.service.dto;
-
+package com.servicemarket.orchestrator.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class Service {
 
 	@Id
@@ -51,3 +51,4 @@ public class Service {
 	}
 	
 }
+

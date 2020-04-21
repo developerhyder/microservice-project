@@ -1,6 +1,7 @@
 package com.servicemarket.service.interfaces;
 
 import org.springframework.data.repository.CrudRepository;
+
 import org.springframework.stereotype.Repository;
 
 import com.servicemarket.service.dto.Service;
