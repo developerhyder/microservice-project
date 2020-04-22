@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.servicemarket.customer.dto.Customer;
 import com.servicemarket.customer.interfaces.CustomerInterface;
@@ -15,14 +16,22 @@ public class CustomerService implements CustomerInterface{
 	@Autowired
 	CustomerRepository repo;
 
+	@Autowired
+	RestTemplate restTemplate;
+	
 	@Override
 	public String signUp(Customer customer) {
 		if(getUserEmail(customer.getEmail())){
 			return "email exists";
 			}
 		else{
-			repo.save(customer);
-		return "successfully signed up";}
+			//here we will call 2FA micro service and we will save the details in db from 2FA microservice
+			//we will have to remove repo.save()
+			//repo.save(customer);
+			String url="http://localhost:5005/fa/auth";
+			return restTemplate.postForObject(url, customer, String.class);
+		
+		}
 	}
 	
 	@Override
@@ -48,7 +57,19 @@ public class CustomerService implements CustomerInterface{
 	public Optional<Customer> getDetailsByCid(Integer id) {
 			return repo.findById(id);
 		}
+
+	@Override
+	public String save(Customer customer) {
+		
+		if (repo.save(customer) != null) {
+			return "succefully finished the signup";
+		}else {
+			return "something went wrong during saving process";
+		}
 	}
+	
+	
+}
 
 
 

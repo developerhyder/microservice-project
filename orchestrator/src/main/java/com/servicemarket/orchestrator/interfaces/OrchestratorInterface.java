@@ -12,8 +12,7 @@ import com.servicemarket.orchestrator.dto.ViewProfile;
 
 public interface OrchestratorInterface {
 
-	public String signUp(Customer customer);
-	public String signIn(String email, String password);
+	
 	public Customer getCustomerById(Integer id);
 	
 	String addService(Service service);

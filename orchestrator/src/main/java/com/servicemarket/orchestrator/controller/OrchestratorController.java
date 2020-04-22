@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.servicemarket.orchestrator.dto.Customer;
 import com.servicemarket.orchestrator.dto.Profile;
 import com.servicemarket.orchestrator.dto.Service;
-import com.servicemarket.orchestrator.dto.SignIn;
+
 import com.servicemarket.orchestrator.dto.ViewProfile;
 import com.servicemarket.orchestrator.service.OrchestratorService;
 
@@ -32,18 +31,8 @@ public class OrchestratorController {
 	OrchestratorService mainService;
 	
 	//for the email type verification can be done while taking the input
-	@ApiOperation(value="sign up method",notes="the user signup takes place in this method", response=String.class)
-	@RequestMapping(method=RequestMethod.POST, value = "/signup")
-	String signUp(@RequestBody Customer customer) {
-		return mainService.signUp(customer);
-	}
 	
-	//this method will have the data in post the reason being its safe
-	@RequestMapping(method=RequestMethod.POST, value="/signin")
-	String signIn(@RequestBody SignIn details) {
-		return mainService.signIn(details.getEmail(), details.getPassword());
-	}
-	
+	@ApiOperation(value="add a service", notes="adding the service to service mircroservice")
 	@RequestMapping(method=RequestMethod.POST, value="/addService/{password}")
 	String addService(@RequestBody Service service, @PathVariable String password) {
 		//System.out.println(service.getName()+"check - 2222");

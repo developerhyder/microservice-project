@@ -17,5 +17,7 @@ public interface CustomerInterface {
 			//for signin use @PathVariable
 			public String signIn(String userName, String password);
 			
+			public String save(Customer customer);
+			
 			public Optional<Customer> getDetailsByCid(Integer id);
 }

@@ -19,18 +19,7 @@ public class OrchestratorService implements OrchestratorInterface{
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@Override
-	public String signUp(Customer customer) {
-		String url = "http://localhost:5001/customer/signup";
-		
-		return restTemplate.postForObject(url, customer, String.class);
-	}
-
-	@Override
-	public String signIn(String email, String password) {
-		String url = "http://localhost:5001/customer/signin/"+email+"/"+password;
-		return restTemplate.getForObject(url, String.class);
-	}
+	
 
 	@Override
 	public Customer getCustomerById(Integer id) {

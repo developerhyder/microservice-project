@@ -32,6 +32,11 @@ public class CustomerController {
 		return service.getDetailsByCid(id);
 	}
 	
+	@RequestMapping(method=RequestMethod.POST,value="/save")
+	String saveCustomer(@RequestBody Customer customer) {
+		return service.save(customer);
+	}
+	
 }
 
 
