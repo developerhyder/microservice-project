@@ -11,17 +11,18 @@ import com.servicemarket.fa.dto.Customer;
 import com.servicemarket.fa.service.OtpService;
 
 @RestController
+@RequestMapping("/fa")
 public class OtpController {
 
 	@Autowired
 	OtpService service;
 	
-	@RequestMapping(method = RequestMethod.POST, value="/fa/auth")
+	@RequestMapping(method = RequestMethod.POST, value="/auth")
 	String authenticate(@RequestBody Customer customer) {
 		return service.sendAuthMail(customer);
 	}
 	
-	@RequestMapping("/fa/verify/{email}/{otp_gen}")
+	@RequestMapping("/verify/{email}/{otp_gen}")
 	String validate(@PathVariable String email, @PathVariable String otp_gen) {
 		
 		return service.verifyLink(email, otp_gen);
