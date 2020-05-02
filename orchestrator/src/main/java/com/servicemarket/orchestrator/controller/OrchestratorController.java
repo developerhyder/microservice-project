@@ -63,17 +63,18 @@ public class OrchestratorController {
 	Service getServiceById(@PathVariable Integer serviceId) {
 		return mainService.getServiceById(serviceId);
 	}
-	@RequestMapping("/buy/{serviceId}/{customerId}")
-	String addTransaction(@PathVariable Integer serviceId, @PathVariable Integer customerId) {
+	@RequestMapping("/buy/{transactionId}/{serviceId}/{customerId}")
+	String addTransaction(@PathVariable String transactionId, @PathVariable Integer serviceId, @PathVariable Integer customerId) {
 		Profile profile = new Profile();
+		if(transactionId.equals("none")) {
+			return "some error has occured while payment";
+		}
 		profile.setCost(mainService.getServiceById(serviceId).getCost());
 		profile.setCustomerId(customerId);
 		profile.setServiceId(serviceId);
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		profile.setTimestamp(ts.toString());
-		Random random = new Random();
-		String trId = ""+serviceId+customerId+random.nextInt(10)+random.nextInt(10)+random.nextInt(10)+random.nextInt(10);
-		profile.setTransactionId(trId);
+		profile.setTransactionId(transactionId);
 		return mainService.addTransaction(profile);
 	}
 	

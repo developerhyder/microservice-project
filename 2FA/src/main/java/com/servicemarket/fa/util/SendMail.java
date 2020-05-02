@@ -14,8 +14,8 @@ public class SendMail {
 
 	public static String send(String email, String link, String name){
 		
-		 
-        String to = "from@gmail.com";
+		 // Recipient's email ID needs to be mentioned.
+        String to = "developerhyder@gmail.com";
 
         // Sender's email ID needs to be mentioned
         String from = email;
@@ -37,7 +37,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("from@gmail.com", "***********");
+                return new PasswordAuthentication("developerhyder@gmail.com", "555sslcresult");
 
             }
 
