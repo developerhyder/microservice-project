@@ -1,0 +1,19 @@
+.content-1{
+    display:block;
+    padding: 20px 10px;
+}
+
+.content-2{
+    display: block;
+    padding: 20px 5px;
+}
+.content3{
+    margin: 10px;
+}
+.cursor-custom:hover{
+    cursor: pointer;
+    color: forestgreen;
+}
+.someCoolbg{
+    background-image: url('D:\dev\service-market\local\frontend\src\assets\images\bg4.jpg');
+}

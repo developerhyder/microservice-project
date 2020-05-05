@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+    background-image: url('D:\dev\service-market\local\frontend\src\assets\images\bg1.jpg');
+}
+.cmp {
+    padding: 0px 50px 50px 50px;
+    margin: 6px;
+    
+  }
+  .jumbotron {
+    background-image: url("assets/images/abstract.jpg");
+    background-size: cover;
+    height:500px;
+  }
