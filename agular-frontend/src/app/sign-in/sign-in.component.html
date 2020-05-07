@@ -1,155 +1,169 @@
-<div class="container-fluid bg-light text-dark rounded">
+<div *ngIf="checkloggedIn()">
+
+    <div class="container-fluid bg-light text-dark rounded">
     
-    <div class="row">
-        <div class="col-md-8 content-1 text-center">Looks like we have a visitor !!! Sign up now and get discounts upto 50% and even more</div>
-        <div class="col-md-4 content-2 ">
-            
-            <div class="text-center">
-                <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="signInButton()" >Sign In</button>
-                <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="signUpButton()">Sign Up</button>
-            </div>
-            
-        </div>
-    </div>
-    <div class="container-fluid" *ngIf="isSignIn">
         <div class="row">
-            <div class="col-md-8 someCoolbg align-middle text-white ">
-                   <div class="text-center" style="margin: 50px 0px;">
-                        <h3>We have added new features !!!</h3>
-                        <h5> A Web app with infinite possibilities</h5>
-                   </div>
-
+            <div class="col-md-8 content-1 text-center">Looks like we have a visitor !!! Sign up now and get discounts upto 50% and even more</div>
+            <div class="col-md-4 content-2 ">
+                
+                <div class="text-center">
+                    <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="signInButton()" >Sign In</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="signUpButton()">Sign Up</button>
+                </div>
+                
             </div>
-            <div class="col-md-4 bg-light ">
-                <form>           
-                    <div class="form-group">               
-                  <label> Enter your Email Id</label><br>
-                  <input required
-                    ngModel 
-                    name="EmailID"
-                    #EmailID="ngModel"
-                    id="EmailID" 
-                    type="email" 
-                    class="form-control"
-                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    placeholder="Your Email Id">
-                 </div>
-                    <div *ngIf="EmailID.invalid && EmailID.touched">
-                        <div *ngIf="EmailID.errors?.pattern" class="alert alert-danger">format is somename@mail.com</div>
-                        <div *ngIf="EmailID.errors?.required" class="alert alert-danger">dont forget your email</div>
-                    </div>
-
-                    
-                    
-                  
-                        <div class="form-group">
-                          <label> Enter your password</label><br>
+        </div>
+        <div class="container-fluid" *ngIf="isSignIn">
+            <div class="row">
+                <div class="col-md-8 someCoolbg align-middle text-white ">
+                       <div class="text-center" style="margin: 50px 0px;">
+                            <h3>We have added new features !!!</h3>
+                            <h5> A Web app with infinite possibilities</h5>
+                       </div>
+    
+                </div>
+                <div class="col-md-4 bg-light ">
+                    <form>           
+                        <div class="form-group">               
+                      <label> Enter your Email Id</label><br>
                       <input required
                         ngModel 
-                        name="password"
-                        #password="ngModel" 
-                        id="password" 
-                        type="text" 
+                        name="EmailID"
+                        #EmailID="ngModel"
+                        id="EmailID" 
+                        type="email" 
                         class="form-control"
-                        minlength="5"
-                        placeholder="Your password">
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        placeholder="Your Email Id">
+                     </div>
+                        <div *ngIf="EmailID.invalid && EmailID.touched">
+                            <div *ngIf="EmailID.errors?.pattern" class="alert alert-danger">format is somename@mail.com</div>
+                            <div *ngIf="EmailID.errors?.required" class="alert alert-danger">dont forget your email</div>
                         </div>
-                        <div *ngIf="password.invalid && password.touched">
-                            <div *ngIf="password.errors?.minlength" class="alert alert-danger">the password must be of minimum 5 chars</div>
-                            <div *ngIf="password.errors?.required" class="alert alert-danger">dont forget your password</div>
-                        </div>   
-                        <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="loginValidate(password, EmailID)">Log In</button>
-
-                      </form>
-                    
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="text-center">
-                    <!-- <img src="assets\images\uparrow.png" alt="" class="img-fluid img-size"> -->
-                    <h1 (click)="hide()" class="cursor-custom">^</h1>
+    
+                        
+                        
+                      
+                            <div class="form-group">
+                              <label> Enter your password</label><br>
+                          <input required
+                            ngModel 
+                            name="password"
+                            #password="ngModel" 
+                            id="password" 
+                            type="password" 
+                            class="form-control"
+                            minlength="5"
+                            placeholder="Your password">
+                            </div>
+                            <div *ngIf="password.invalid && password.touched">
+                                <div *ngIf="password.errors?.minlength" class="alert alert-danger">the password must be of minimum 5 chars</div>
+                                <div *ngIf="password.errors?.required" class="alert alert-danger">dont forget your password</div>
+                            </div>   
+                            <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="loginValidate(password, EmailID)">Log In</button>
+                          </form>
+                        
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid" *ngIf="isSignUp">
-        <div class="row">
-            <div class="col-md-8 someCoolbg align-middle text-white ">
-                   <div class="text-center" style="margin: 100px 0px;">
-                        <h3>We believe in delivering quality</h3>
-                        <h5> Ease is what it is</h5>
-                   </div>
-
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <!-- <img src="assets\images\uparrow.png" alt="" class="img-fluid img-size"> -->
+                        <h1 (click)="hide()" class="cursor-custom">^</h1>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 bg-light">
-                <form>
-                    <div class="form-group">
-                      <label> Enter your Email</label><br>
-                  <input required
-                   ngModel 
-                   name="emailid"
-                  #emailid="ngModel" 
-                  id="emailid" 
-                  type="text" 
-                  class="form-control"
-                  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  placeholder="Your Email">
-                  </div>
-                  
-                  <div *ngIf="emailid.invalid && emailid.touched">
-                    <div *ngIf="emailid.errors?.pattern" class="alert alert-danger">the format of email : someone@mail.com</div>
-                    <div *ngIf="emailid.errors?.required" class="alert alert-danger">dont forget your email</div>
-                  </div>
-                  <!-- <div class="alert alert-danger" *ngIf="emailid.errors.pattern">
-                    enter correct email
-                  </div> -->
-                  <div class="form-group">
-                    <label> Enter your Name</label><br>
-                    <input required
-                    ngModel 
-                    name="name"
-                    #name="ngModel" 
-                    id="name" 
-                    type="text" 
-                    class="form-control"
-                    
-                    placeholder="Your Name">
-                    </div>
-                    <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-                        one must have a name
-                    </div>
-                    <div class="form-group">
-                        <label> Enter your password</label><br>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="showAlertinLogin">
+                <strong>Looks like some thing went wrong !</strong> {{messageLogin}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+        </div>
+        <div class="container-fluid" *ngIf="isSignUp">
+            <div class="row">
+                <div class="col-md-8 someCoolbg align-middle text-white ">
+                       <div class="text-center" style="margin: 100px 0px;">
+                            <h3>We believe in delivering quality</h3>
+                            <h5> Ease is what it is</h5>
+                       </div>
+    
+                </div>
+                <div class="col-md-4 bg-light">
+                    <form>
+                        <div class="form-group">
+                          <label> Enter your Email</label><br>
+                      <input required
+                       ngModel 
+                       name="emailid"
+                      #emailid="ngModel" 
+                      id="emailid" 
+                      type="text" 
+                      class="form-control"
+                      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      placeholder="Your Email">
+                      </div>
+                      
+                      <div *ngIf="emailid.invalid && emailid.touched">
+                        <div *ngIf="emailid.errors?.pattern" class="alert alert-danger">the format of email : someone@mail.com</div>
+                        <div *ngIf="emailid.errors?.required" class="alert alert-danger">dont forget your email</div>
+                      </div>
+                      <!-- <div class="alert alert-danger" *ngIf="emailid.errors.pattern">
+                        enter correct email
+                      </div> -->
+                      <div class="form-group">
+                        <label> Enter your Name</label><br>
                         <input required
                         ngModel 
-                        name="pswd"
-                        #pswd="ngModel" 
-                        id="pswd" 
-                        type="password" 
+                        name="name"
+                        #name="ngModel" 
+                        id="name" 
+                        type="text" 
                         class="form-control"
-                        minlength="5"
-                        placeholder="Your password">
+                        
+                        placeholder="Your Name">
                         </div>
-                        <div *ngIf="pswd.invalid && pswd.touched">
-                            <div *ngIf="pswd.errors?.minlength" class="alert alert-danger">the password must be of minimum 5 chars</div>
-                            <div *ngIf="pswd.errors?.required" class="alert alert-danger">dont forget your password</div>
+                        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                            one must have a name
                         </div>
-
-                        <button class="btn btn-outline-success my-2 my-sm-0 content3" type="submit" >Sign Up</button>
-                </form>
-                  
-                    
-                    
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="text-center">
-                    <!-- <img src="assets\images\uparrow.png" alt="" class="img-fluid img-size"> -->
-                    <h1 (click)="hide()" class="cursor-custom">^</h1>
+                        <div class="form-group">
+                            <label> Enter your password</label><br>
+                            <input required
+                            ngModel 
+                            name="pswd"
+                            #pswd="ngModel" 
+                            id="pswd" 
+                            type="password" 
+                            class="form-control"
+                            minlength="5"
+                            placeholder="Your password">
+                            </div>
+                            <div *ngIf="pswd.invalid && pswd.touched">
+                                <div *ngIf="pswd.errors?.minlength" class="alert alert-danger">the password must be of minimum 5 chars</div>
+                                <div *ngIf="pswd.errors?.required" class="alert alert-danger">dont forget your password</div>
+                            </div>
+    
+                            <button class="btn btn-outline-success my-2 my-sm-0 content3" (click)="signinValidate(emailid, name, pswd)" >Sign Up</button>
+                    </form>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <!-- <img src="assets\images\uparrow.png" alt="" class="img-fluid img-size"> -->
+                        <h1 (click)="hide()" class="cursor-custom">^</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="showAlert">
+                <strong>Looks like some thing went wrong !</strong> {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
         </div>
+        
+        
     </div>
+    
 </div>

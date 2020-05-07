@@ -1,6 +1,6 @@
 <body>
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">Company Logo</a>
+    <a class="navbar-brand" href="#">K25</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,10 +11,16 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#services">services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link2</a>
+          <a class="nav-link" href="#contact">Contact Us</a>
+        </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn()">
+        <li class="nav-item">
+          <img src="assets/images/power.png" class="imgstyle" data-toggle="tooltip" data-placement="top" title="log out" alt="" (click)="clearData()">
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -40,6 +46,97 @@
       </div>
     </div>
   
+    <div class="cmp container-fluid text-center">
+      <div class="row">
+        <div class="col" style="font-size: 50px;" id="services">Available Services</div>
+      </div>
+    </div>
+    <div class="cmp container-fluid">
+      <div class="row">
+        <div class="col"><app-available-ser></app-available-ser></div>
+      </div>
+    </div>
   <router-outlet></router-outlet>
   
+
+
+
+
+
+
+
+
+  <!-- here comes the footer -->
+
+  <div class="jumbotron-fluid text-center text-md-left bg-dark" id="contact">
+    <div class="container text-center text-light text-md-left">
+   
+       <!-- Grid row -->
+       <div class="row">
+   
+         <!-- Grid column -->
+         <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+   
+           <!-- Content -->
+           <h5 class="font-weight-bold text-uppercase mb-4">Contact Us</h5>
+           <p></p>
+           <p>Please reach out to us if you have any queries or intersted in joining us as a service provider.</p>
+   
+         </div>
+         <!-- Grid column -->
+   
+         <hr class="clearfix w-100 d-md-none">
+   
+         <!-- Grid column -->
+         <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+   
+           <!-- Links -->
+           <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+   
+           <ul class="list-unstyled">
+             <li>
+               <p>
+                 <a href="#!">PROJECTS</a>
+               </p>
+             </li>
+             <li>
+               <p>
+                 <a href="#!">ABOUT US</a>
+               </p>
+             </li>
+             <li>
+               <p>
+                 <a href="#!">OUR TEAM</a>
+               </p>
+             </li>
+            
+           </ul>
+   
+         </div>
+         <!-- Grid column -->
+   
+         <hr class="clearfix w-100 d-md-none">
+   
+         <!-- Grid column -->
+         
+         <!-- Grid column -->
+   
+         <hr class="clearfix w-100 d-md-none">
+   
+         <!-- Grid column -->
+         
+         <!-- Grid column -->
+   
+       </div>
+       <!-- Grid row -->
+   
+     </div>
+     <!-- Footer Links -->
+   
+     <!-- Copyright -->
+     <div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+       <a href="https://kaam25.com/"> kaam25.com</a>
+     </div>
+     <!-- Copyright -->
+     </div>
 </body>

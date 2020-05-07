@@ -8,12 +8,14 @@ import { FormsModule } from '@angular/forms';
 
 import { WebStorageModule } from "ngx-web-storage";
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AvailableSerComponent } from './available-ser/available-ser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SlideshowComponent,
-    SignInComponent
+    SignInComponent,
+    AvailableSerComponent
   ],
   imports: [
     BrowserModule,

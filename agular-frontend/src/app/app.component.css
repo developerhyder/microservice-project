@@ -2,3 +2,12 @@ body{
     background-image: url('D:\dev\service-market\local\frontend\src\assets\images\bg1.jpg');
     font-family: 'Staatliches';
 }
+.imgstyle{
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+.imgstyle:hover{
+    cursor: pointer;
+    filter:drop-shadow(0px 0px 20px red);
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestService } from './test.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   displayContent: string="Service IT";
   lenOfContent: number = this.displayContent.length;
   location: number = 0;
-  constructor(){
+  constructor(private storeService: TestService){
     setInterval( ()=>{
       if(this.location == this.lenOfContent){
         this.displayHeader='#';
@@ -22,5 +23,14 @@ export class AppComponent {
       }
     }, 200);
   }
-  
+  clearData(){
+    this.storeService.clearData();
+  }
+  isLoggedIn(){
+    if(this.storeService.checkIfLoggedIn() != null){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
