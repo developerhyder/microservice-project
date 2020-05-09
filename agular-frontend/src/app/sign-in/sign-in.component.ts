@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestService } from '../test.service';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +20,7 @@ export class SignInComponent implements OnInit {
   showAlert: boolean=false;
   message: string;
   post:any;
-  constructor(private httpRef: HttpClient, private storeService: TestService) {
+  constructor(private _snackBar:MatSnackBar,private httpRef: HttpClient, private storeService: TestService) {
   }
 
   ngOnInit(): void {
@@ -60,12 +61,24 @@ export class SignInComponent implements OnInit {
   processResponse(responseBack: string, val1, val2){
     if(responseBack == "login successfull"){
       console.log("validated");
+      this.addCustomerId(val2.value);
       this.storeService.save(val2.value);
+      this._snackBar.open("login successfull", "ok", {
+        duration:3000,
+      });
     }else{
       console.log("wrong credentials");
       this.showAlertinLogin=true;
       this.messageLogin="looks like you have entered wrong credentials";
     }
+  }
+  addCustomerId(val){
+    const options = {responseType: 'text' as 'text'};
+      let obs = this.httpRef.get("http://localhost:5001/customer/getByEmail/"+val, options);
+      
+      obs.subscribe((responseBack)=>
+        console.log(this.storeService.saveCustomerId(responseBack)+"|000|"+ responseBack)
+      );
   }
   checkloggedIn(){
     if(this.storeService.checkIfLoggedIn() == null){
@@ -109,7 +122,10 @@ export class SignInComponent implements OnInit {
     if(responseBack.indexOf("otp was sent to") != -1){
       console.log(responseBack);
       this.isSignUp=false;
-      alert(responseBack);
+      this._snackBar.open(responseBack, "ok",
+      {
+        duration:3000,
+      });
     }else{
       console.log("something terrible happened");
       this.showAlert=true;

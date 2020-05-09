@@ -3,6 +3,7 @@ package com.servicemarket.service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/service")
+@CrossOrigin(origins="*", allowedHeaders="*")
 @Api(value = "Service Rest API", description = "Information about the services that are being provided in the organization")
 public class ServiceController {
 	

@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 html{
     background-image: url('D:\dev\service-market\local\frontend\src\assets\images\bg1.jpg');
+    background-attachment: fixed;
 }
+
 .cmp {
     padding: 0px 50px 50px 50px;
     margin: 6px;
@@ -12,3 +14,5 @@ html{
     background-size: cover;
     height:500px;
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -35,12 +35,19 @@ public class OtpService implements OtpDetailInterface{
 		otp.setTimestamp(currenTime);
 		Random random = new Random();
 		otp.setOtpGen(""+random.nextInt(10)+random.nextInt(10)+random.nextInt(10)+random.nextInt(10));
-		if(repo.save(otp) == null) {
-			return "something went wrong";
+		if(repo.getCustomerByEmail(customer.getEmail())>1) {
+			
+			return "email is already sent your mail please check your mail";
 		}else {
-			//add the content to be sent
-			return SendMail.send(customer.getEmail(), "http://localhost:5005/fa/verify/"+otp.getEmail()+"/"+otp.getOtpGen(), otp.getName());
+			
+			if(repo.save(otp) == null) {
+				return "something went wrong";
+			}else {
+				//add the content to be sent
+				return SendMail.send(customer.getEmail(), "http://localhost:5005/fa/verify/"+otp.getEmail()+"/"+otp.getOtpGen(), otp.getName());
+			}
 		}
+		
 	}
 
 	@Override

@@ -6,4 +6,6 @@ public interface OtpDetailInterface {
 
 	public String sendAuthMail(Customer customer);
 	public String verifyLink(String email, String otpValue);
+	
+	
 }

@@ -3,21 +3,28 @@
 	<br>
 	<p class="text-right text-link"></p>
 	
-<div class="container-fluid text-center " >
-  <div class="row m-4 text-center">
+<div class="container-fluid text-center" >
+  <div class="row m-4 text-center rounded">
     <div *ngFor="let service of responseBack;let i = index">
-    <div class="row " style="padding: 50px;margin-left: 60px;">
+    <div class="row " style="padding: 50px;margin-left: 60px; filter:drop-shadow(8px 8px 10px gray);">
       <div class="col-md-8 col-bg align-middle">
         <div style="margin: 50px 0px;" class="text-white">
         <h1>{{service.name}}</h1>
         </div>
 
       </div>
-      
-      <div class="col-md-4 " style="padding: 50px;">
+      <!-- {{getCustomerId()}} -->
+      <div class="col-md-4 bg-light" style="padding: 20px;">
         <h4> {{service.name}}</h4>
         <p>{{service.description}} </p>
-        <button class="btn btn-primary" >Hire</button  >
+        <!-- <button onclick="window.location.href='https://w3docs.com';" >Click Here</button> -->
+        <div *ngIf="!getCustomerId()">
+          <button class="btn btn-primary"  onclick="window.location.href='#signin';" mat-stroked-button (click)="showAlertNotification()" >Hire</button  >
+        </div>
+        <div *ngIf="getCustomerId()">
+          <!-- onclick="window.location.href ='/pay/getCustomerId()/service.sericeId/service.cost';" -->
+          <button class="btn btn-primary"  (click)="processValues(service.serviceId, service.cost, getCustomerId())">HIire</button>
+        </div>
       </div>
    </div>  
    <hr>

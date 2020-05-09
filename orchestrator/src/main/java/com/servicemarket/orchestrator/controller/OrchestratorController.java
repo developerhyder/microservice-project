@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
+@CrossOrigin(origins="*", allowedHeaders="*")
 @Api(value="Orchestrator api", description="it binds the other apis and acts as a main page")
 public class OrchestratorController {
 
@@ -91,5 +93,4 @@ public class OrchestratorController {
 	ViewProfile profileOfCustomer(@PathVariable Integer customerId) {
 		return mainService.checkProfile(customerId);
 	}
-	
 }

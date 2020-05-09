@@ -15,10 +15,10 @@ public class SendMail {
 	public static String send(String email, String link, String name){
 		
 		 // Recipient's email ID needs to be mentioned.
-        String to = "developerhyder@gmail.com";
+        String to = email;
 
         // Sender's email ID needs to be mentioned
-        String from = email;
+        String from = "developerhyder@gmail.com";
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -37,7 +37,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("developerhyder@gmail.com", "***********************");
+                return new PasswordAuthentication("sender@gmail.com", "***********");
 
             }
 

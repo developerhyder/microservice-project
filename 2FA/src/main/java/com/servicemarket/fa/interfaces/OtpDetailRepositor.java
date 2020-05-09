@@ -23,4 +23,10 @@ public interface OtpDetailRepositor extends CrudRepository<OtpDetail, Integer>{
 	
 	@Query(value="select timestamp from otp_detail where email=?1 and otp_gen=?2", nativeQuery=true)
 	long getTimeStamp(String email,String otp_gen);
+	
+	@Query(value="select count(*) from customer where email = ?1 ", nativeQuery=true)
+	int getCustomerByEmail(String email);
+	
+	@Query(value="select timestamp from otp_detail where email=?1", nativeQuery=true)
+	long getTimeStampNew(String email);
 }

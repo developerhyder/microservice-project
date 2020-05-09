@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin(origins="*", allowedHeaders="*")
 @Api(value = "Customer Rest API", description = "Information about customers of our service market organization")
 public class CustomerController {
 	
@@ -53,4 +55,8 @@ public class CustomerController {
 		return service.save(customer);
 	}
 	
+	@RequestMapping("/getByEmail/{email}")
+	int getCidByEmail(@PathVariable String email) {
+		return service.getCidByEmail(email);
+	}
 }

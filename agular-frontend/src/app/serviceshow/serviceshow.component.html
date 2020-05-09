@@ -1,0 +1,16 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <th>Service Id</th>
+            <th>service Name</th>
+            <th>Service Description</th>
+            <th>Service Cost</th>
+        </thead>
+        <tbody *ngFor="let item of responseBody">
+            <td>{{item.serviceId}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.cost}}</td>
+        </tbody>
+    </table>
+</div>

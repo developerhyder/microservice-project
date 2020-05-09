@@ -1,4 +1,4 @@
-<div *ngIf="checkloggedIn()">
+<div *ngIf="checkloggedIn()" style="filter:drop-shadow(8px 8px 10px gray);">
 
     <div class="container-fluid bg-light text-dark rounded">
     
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="showAlert">
-                <strong>Looks like some thing went wrong !</strong> {{message}}
+                <strong>Looks like some thing went wrong ! </strong> {{message}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

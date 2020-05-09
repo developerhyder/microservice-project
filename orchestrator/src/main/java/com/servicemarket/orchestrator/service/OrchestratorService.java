@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,6 +13,7 @@ import com.servicemarket.orchestrator.dto.Customer;
 import com.servicemarket.orchestrator.dto.Profile;
 import com.servicemarket.orchestrator.dto.ViewProfile;
 import com.servicemarket.orchestrator.interfaces.OrchestratorInterface;
+import com.servicemarket.orchestrator.util.SendEmail;
 
 @Service
 public class OrchestratorService implements OrchestratorInterface{
@@ -57,12 +59,19 @@ public class OrchestratorService implements OrchestratorInterface{
 	@Override
 	public String updateService(com.servicemarket.orchestrator.dto.Service service) {
 		String url="http://localhost:5003/service/update";
+		
 		return restTemplate.postForObject(url, service, String.class);
 	}
 
 	@Override
 	public String addTransaction(Profile profile) {
 		String url="http://localhost:5002/profile/addtransaction";
+		//get transaction by id
+		Customer customer = new Customer();
+		com.servicemarket.orchestrator.dto.Service ser = new com.servicemarket.orchestrator.dto.Service();
+		ser = getServiceById(profile.getServiceId());
+		customer = getCustomerById(profile.getCustomerId());
+		SendEmail.send(customer.getEmail(), profile.getTransactionId(), profile.getServiceId(), customer.getName(), profile.getCost(), ser.getName());
 		return restTemplate.postForObject(url, profile, String.class);
 	}
 
@@ -79,8 +88,6 @@ public class OrchestratorService implements OrchestratorInterface{
 		String url = "http://localhost:5002/profile/getById/"+customerId;
 		return Arrays.asList(restTemplate.getForObject(url, Profile[].class));
 	}
-	
-	
 	public boolean verify(String password) {
 		if(password.equals("password")) {
 			return true;

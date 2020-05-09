@@ -20,4 +20,6 @@ public interface CustomerInterface {
 			public String save(Customer customer);
 			
 			public Optional<Customer> getDetailsByCid(Integer id);
+			
+			public int getCidByEmail(String email);
 }

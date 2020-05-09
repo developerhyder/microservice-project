@@ -67,6 +67,12 @@ public class CustomerService implements CustomerInterface{
 			return "something went wrong during saving process";
 		}
 	}
+
+	@Override
+	public int getCidByEmail(String email) {
+		
+		return repo.getCustomerByEmail(email);
+	}
 	
 	
 }

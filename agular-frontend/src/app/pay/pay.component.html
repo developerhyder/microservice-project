@@ -1,0 +1,33 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="beforePayment">
+    <div class="container">
+    
+        <h1  class="display-2 text-center font-weight-bold" style="text-decoration: underline;">Checkout</h1>
+        <h1 class="display-4" style="text-decoration: underline;">Details</h1>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="row">Customer Id</th>
+                    <th>{{customerId}}</th>
+                </tr>
+                <tr>
+                    <th scope="row">Service Id</th>
+                    <th>{{serviceId}}</th>
+                </tr>
+                <tr class="table-dark">
+                    <th scope="row">Total Amount to be Paid</th>
+                    <th>{{finalAmount}}</th>
+                </tr>
+            </tbody>
+        </table>
+        <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
+        <div id="paypal-checkout-btn"></div>
+    
+    </div>
+</div>
+<div *ngIf="!beforePayment">
+    <div class="alert alert-success" role="alert">
+        give us a moment we will redirect you to the main page
+      </div>
+</div>

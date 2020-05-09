@@ -1,0 +1,13 @@
+<div class="container" style="background-color:blanchedalmond;">
+    <h1 style="text-align: center;">Delete a Service</h1>
+    <h3 style="text-align: center;">Enter the Id to be deleted</h3>
+    <form class="form-inline" style="margin-top: 50px;">
+        <input required ngModel name="serviceId" #serviceId="ngModel" type="text" pattern="[0-9]{1,}" placeholder="Service Id" id="serviceId">
+            <div class="alert alert_danger" *ngIf="!serviceId.valid && serviceId.touched">
+                <div *ngIf="serviceId.errors.required">Id required</div>
+                <div *ngIf="serviceId.errors.pattern">Enter the id as a number</div>
+            </div>
+        <div class="btn btn-dark" style="margin-left: 50px;" (click)="delete(serviceId)">Submit</div>
+    </form>
+    <h3 style="text-align: center;">{{response}}</h3>
+</div>
