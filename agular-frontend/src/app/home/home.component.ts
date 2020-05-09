@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TestService } from '../test.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceAdminComponent } from '../service-admin/service-admin.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,7 @@ export class HomeComponent{
   }
 
   viewMyProfile(){
-    const dialogRef =this.dialog.open(ServiceAdminComponent);
+    const dialogRef =this.dialog.open(ProfileComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });

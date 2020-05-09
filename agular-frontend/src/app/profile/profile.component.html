@@ -1,0 +1,74 @@
+<div>
+    <h1>My profile</h1>
+</div>
+<mat-dialog-content>
+    
+ 
+<div *ngIf="response">
+	<div class="bg-light">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Customer Name</th>
+					<th>Customer Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{response.customer.name}}</td>
+					<td>{{response.customer.email}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br><br>
+	<div class="d-xl-block bg-dark"><h3 class="text-white text-center" >Transactions</h3></div>
+	<div class="bg-light">
+	<div class="container">
+		
+		<!-- <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="row">Transaction Id</th>
+                    <th>Timestamp</th>
+                    <th>cost</th>
+                </tr> -->
+                <div class="row text-dark" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <b>Service Id</b>
+                </div>
+                <div class="col-md-5">
+                    <b>transaction-Id</b>
+                </div>
+                <div class="col-md-3">
+                    <b>timestamp</b>
+                </div>
+                <div class="col-md-2">
+                    <b>cost</b>
+                </div>
+                
+                </div>
+                <hr>
+				
+				<div *ngFor="let item of response.profile;let i=index">
+                    <div class="row text-dark">
+                    <div class="col-md-2">
+                        {{item.serviceId}}
+                    </div>
+					<div class="col-md-5">
+						{{item.transactionId}}</div>
+					<div class="col-md-3">
+						{{item.timestamp}}</div>
+					<div class="col-md-2">
+						{{item.cost}}</div>
+                    </div>
+                <hr>
+                </div>
+            
+        <!-- </tbody>
+    </table>	 -->
+	</div>
+	</div>
+</div>
+
+</mat-dialog-content>

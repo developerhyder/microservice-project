@@ -18,8 +18,13 @@ import { HomeComponent } from './home/home.component';
 import { PayComponent } from './pay/pay.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
-
+import { ProfileComponent } from './profile/profile.component';
+import {
+  MatButtonModule,
+} from '@angular/material/button';
+import{
+  MatCommonModule,
+ } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ServiceupdateComponent,
     ServiceshowComponent,
     HomeComponent,
-    PayComponent
+    PayComponent,
+    ProfileComponent
   ],
   imports: [
     //BrowserModule,
@@ -42,6 +48,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpClientModule,
     FormsModule,
     MatSnackBarModule,
+    MatButtonModule,
+    MatCommonModule,
     BrowserAnimationsModule
   ],
   providers: [],

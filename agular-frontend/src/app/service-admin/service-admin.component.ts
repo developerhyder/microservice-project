@@ -54,5 +54,8 @@ export class ServiceAdminComponent implements OnInit {
         
     }
 }
+  logout(){
+  this.res=false;
+}
  
 }

@@ -19,9 +19,9 @@
           </li>
           
         </ul>
-        <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn()">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;" *ngIf="isLoggedIn()">
           <li class="nav-item">
-            <a class="nav-link" href="#contact" (click)="viewMyProfile()">My Profile   </a>
+            <a class="nav-link bg-light" mat-raised-button (click)="viewMyProfile()">My Profile   </a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn()">
