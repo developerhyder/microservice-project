@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TestService } from '../test.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit {
 
-  customer_id : string = "1";
+  customer_id : string ;
 
   response:any;
 
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private http:HttpClient,
     public dialogRef: MatDialogRef<ProfileComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private test: TestService) {
       this.fetchTransactions();
      }
 
@@ -30,11 +31,13 @@ export class ProfileComponent implements OnInit {
   }
   fetchTransactions(){
     this.isOn=!this.isOn;
-   let obs = this.http.get("http://localhost:5000/viewProfile/" + this.customer_id);
+    console.log(this.customer_id + ": The customer id");
+    this.customer_id = this.test.getCustomerId();
+    console.log(this.customer_id + ": The customer id");
+   let obs = this.http.get("http://localhost:5000/viewPro/" + this.customer_id);
     obs.subscribe((response) => {
     this.response = response;
-    console.log(this.response);
-    
+    console.log(this.response);    
     });
   }
 }

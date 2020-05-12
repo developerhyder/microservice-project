@@ -1,6 +1,7 @@
 <router-outlet></router-outlet>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div>
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" >
       <a class="navbar-brand logo-shadow" href="#" >K25</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,7 +20,19 @@
           </li>
           
         </ul>
-        <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;" *ngIf="isLoggedIn()">
+        
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+        
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control" style="width: 500px;" type="text" placeholder="Search for a Service..." aria-label="Search" (input)="searchNames(serviceName)"  id="serviceName" name="serviceName" ngModel #serviceName="ngModel">
+          <div (click)="searchNames(searchNames)"  type="submit">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;margin-left:30px;" *ngIf="isLoggedIn()">
           <li class="nav-item">
             <a class="nav-link bg-light" mat-raised-button (click)="viewMyProfile()">My Profile   </a>
           </li>
@@ -29,13 +42,36 @@
             <img src="assets/images/power.png" class="imgstyle" data-toggle="tooltip" data-placement="top" title="log out" alt="" (click)="clearData()">
           </li>
         </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
-      </div>
+    </div>
     </nav>
-    
+    </div>
+    <div *ngIf="responseBody && serviceName.viewModel!=''">
+        <div class="container-fluid text-center"  >
+            <div class="row bg-light" style="padding:30px;">
+                <div class="col">
+                  
+                </div>
+            </div>
+            <div *ngFor="let item of responseBody;let i = index">
+              <div class="row bg-light text-left" style="padding:10px 0px;border-top:0.5px solid;" >
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-4 align-middle">
+                  <p>{{item.name}}</p>
+                </div>
+                <div class="col-md-6 align-middle">
+                  <p>{{item.description}}</p>
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary"  (click)="processValues(item.serviceId, item.cost)">Hire</button>
+                </div>
+             </div>  
+             
+            </div>
+          </div>
+
+      </div>
       <!-- <div class="container-fluid cmp">
         <app-slideshow></app-slideshow>
       </div> -->
@@ -51,7 +87,7 @@
           <div class="col"><app-sign-in></app-sign-in></div>
         </div>
       </div>
-    
+      
       <div class="cmp container-fluid text-center">
         <div class="row">
           <div class="col" style="font-size: 50px; " id="services">Available Services</div>

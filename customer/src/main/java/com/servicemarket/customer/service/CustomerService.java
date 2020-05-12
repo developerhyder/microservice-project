@@ -71,7 +71,7 @@ public class CustomerService implements CustomerInterface{
 	@Override
 	public int getCidByEmail(String email) {
 		
-		return repo.getCustomerByEmail(email);
+		return repo.getCustomerId(email);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.servicemarket.service.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,7 +38,7 @@ public class ServiceController {
 	@ApiOperation(value = "Service by its id", 
 			notes = "Hit this URL for getting the service id")
 	@RequestMapping("/find/{serviceId}")
-		Service getServiceById(@PathVariable int serviceId) {
+		Optional<Service> getServiceById(@PathVariable int serviceId) {
 	 	return service.getServiceById(serviceId);
 	}
 	@ApiOperation(value = "Deleting an service", 
@@ -57,6 +58,11 @@ public class ServiceController {
 	@RequestMapping(method=RequestMethod.POST, value="/update") 
 	String updateService(@RequestBody Service srv) {
 		return service.updateService(srv);
-}
+	}
 	
+	@ApiOperation(value="Getting all Services By Name",notes = "Hit this URL for getting the services by name")
+	@RequestMapping("/serviceByName/{serviceName}")
+	List<Service> getServiceByName(@PathVariable String serviceName){
+		return service.getByServiceName(serviceName);
+	}
 }

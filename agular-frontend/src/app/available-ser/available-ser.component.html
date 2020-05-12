@@ -5,16 +5,17 @@
 	
 <div class="container-fluid text-center" >
   <div class="row m-4 text-center rounded">
-    <div *ngFor="let service of responseBack;let i = index">
-    <div class="row " style="padding: 50px;margin-left: 60px; filter:drop-shadow(8px 8px 10px gray);">
-      <div class="col-md-8 col-bg align-middle">
+    <div *ngFor="let service of responseBack |slice:0:show ;let i = index">
+     
+    <div class="row " style="padding: 50px;margin-left: 60px; filter:drop-shadow(8px 8px 10px gray); text-center;">
+      <div class="col-md-8 col-bg align-middle" style="width:500px;">
         <div style="margin: 50px 0px;" class="text-white">
         <h1>{{service.name}}</h1>
         </div>
 
       </div>
       <!-- {{getCustomerId()}} -->
-      <div class="col-md-4 bg-light" style="padding: 20px;">
+      <div class="col-md-4 bg-light" style="padding: 20px; width:300px;">
         <h4> {{service.name}}</h4>
         <p>{{service.description}} </p>
         <!-- <button onclick="window.location.href='https://w3docs.com';" >Click Here</button> -->
@@ -23,11 +24,21 @@
         </div>
         <div *ngIf="getCustomerId()">
           <!-- onclick="window.location.href ='/pay/getCustomerId()/service.sericeId/service.cost';" -->
-          <button class="btn btn-primary"  (click)="processValues(service.serviceId, service.cost, getCustomerId())">HIire</button>
+          <button class="btn btn-primary"  (click)="processValues(service.serviceId, service.cost, getCustomerId())">Hire</button>
         </div>
       </div>
+      
    </div>  
+   <div class="row text-center">
+    <div class="col ">
+        <!-- <button >Show More</button> -->
+        <div *ngIf="i == 3 && show == 4" (click)="show = service.length" style="margin-top:30px; filter:drop-shadow(8px 8px 10px gray);" class="alert alert-success rounded custom-showmore" role="alert">
+        Show More Services
+      </div>
+    </div>
+   </div>
    <hr>
+   
 </div>
 
 </div>

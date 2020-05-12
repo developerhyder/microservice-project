@@ -17,10 +17,12 @@ export class TestService {
   }
   saveCustomerId(val){
     var k=  +val;
+    console.log("customerid Test:" + k);
     return this.storage.local.set(this.customerIdToken, k);
   }
   clearData(){
     this.storage.local.clear();
+    console.log(this.getCustomerId());
   }
 
   getCustomerId(){

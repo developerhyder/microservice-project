@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.servicemarket.orchestrator.dto.Customer;
 import com.servicemarket.orchestrator.dto.Profile;
+import com.servicemarket.orchestrator.dto.ProfileView;
 import com.servicemarket.orchestrator.dto.Service;
+import com.servicemarket.orchestrator.dto.UpdatedProfile;
 import com.servicemarket.orchestrator.dto.ViewProfile;
 
 
@@ -26,4 +28,6 @@ public interface OrchestratorInterface {
 	public List<Profile> getTransactionById(Integer customerId);
 	
 	public ViewProfile checkProfile(Integer customerId);
+	
+	public UpdatedProfile getProfile(Integer customerId);
 }

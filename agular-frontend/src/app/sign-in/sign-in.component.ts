@@ -35,6 +35,7 @@ export class SignInComponent implements OnInit {
     this.isSignIn=false;
   }
   hide(){
+    this.showAlertinLogin=false;
     this.isSignIn=false;
     this.isSignUp=false;
   }

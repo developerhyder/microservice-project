@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.servicemarket.orchestrator.dto.Customer;
 import com.servicemarket.orchestrator.dto.Profile;
+import com.servicemarket.orchestrator.dto.ProfileView;
+import com.servicemarket.orchestrator.dto.UpdatedProfile;
 import com.servicemarket.orchestrator.dto.ViewProfile;
 import com.servicemarket.orchestrator.interfaces.OrchestratorInterface;
 import com.servicemarket.orchestrator.util.SendEmail;
@@ -21,8 +23,6 @@ public class OrchestratorService implements OrchestratorInterface{
 	@Autowired
 	RestTemplate restTemplate;
 	
-	
-
 	@Override
 	public Customer getCustomerById(Integer id) {
 		String url = "http://localhost:5001/customer/"+id;
@@ -43,10 +43,18 @@ public class OrchestratorService implements OrchestratorInterface{
 		return "deleted record";
 	}
 
+	public com.servicemarket.orchestrator.dto.Service stillWorks(Integer id){
+		return null;
+	}
+	
+	@HystrixCommand(fallbackMethod="stillWorks")
 	@Override
 	public com.servicemarket.orchestrator.dto.Service getServiceById(Integer id) {
 		String url = "http://localhost:5003/service/find/"+id;
-		return restTemplate.getForObject(url, com.servicemarket.orchestrator.dto.Service.class);
+		com.servicemarket.orchestrator.dto.Service serv = new com.servicemarket.orchestrator.dto.Service();
+		serv= restTemplate.getForObject(url, com.servicemarket.orchestrator.dto.Service.class);
+		
+		return serv;
 	}
 
 	@Override
@@ -100,7 +108,32 @@ public class OrchestratorService implements OrchestratorInterface{
 		customer = getCustomerById(customerId);
 		List<Profile> profileList = new ArrayList<>();
 		profileList = getTransactionById(customerId);
-		return new ViewProfile(customer, profileList);
+		return new ViewProfile(customer, profileList);	
 	}
+
+	@Override
+	public UpdatedProfile getProfile(Integer customerId) {
+		Customer customer = new Customer();
+		customer = getCustomerById(customerId);
+		List<Profile> transactions = new ArrayList<>();
+		UpdatedProfile upProfile = new UpdatedProfile();
+		upProfile.setCustomer(customer);
+		transactions = getTransactionById(customerId);
+		for(Profile pr : transactions) {
+			
+			com.servicemarket.orchestrator.dto.Service serv = getServiceById(pr.getServiceId());
+			
+			String serviceName = "";
+			if(serv==null) {
+				serviceName = "service not available";
+			}else {
+				serviceName = serv.getName();
+			}
+			upProfile.addProfile(new ProfileView(serviceName, pr));
+		}
+		upProfile.getCustomer().setPassword("");
+		return upProfile;
+	}
+	
 	
 }

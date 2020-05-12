@@ -12,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class AvailableSerComponent implements OnInit {
   name : string = "";
   service_id: string ="";
+  show = 4;
 
   responseBack : any;
   response: any;
@@ -58,4 +59,5 @@ fetchFull(){
   this.response = response;
   });
 }
+
 }

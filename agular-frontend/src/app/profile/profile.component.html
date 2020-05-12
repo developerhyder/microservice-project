@@ -35,7 +35,7 @@
                 </tr> -->
                 <div class="row text-dark" style="margin-bottom: 20px;">
                 <div class="col-md-2">
-                    <b>Service Id</b>
+                    <b>Service Name</b>
                 </div>
                 <div class="col-md-5">
                     <b>transaction-Id</b>
@@ -50,17 +50,17 @@
                 </div>
                 <hr>
 				
-				<div *ngFor="let item of response.profile;let i=index">
+				<div *ngFor="let item of response.profileView;let i=index">
                     <div class="row text-dark">
                     <div class="col-md-2">
-                        {{item.serviceId}}
+                        {{item.serviceName}}
                     </div>
 					<div class="col-md-5">
-						{{item.transactionId}}</div>
+						{{item.profile.transactionId}}</div>
 					<div class="col-md-3">
-						{{item.timestamp}}</div>
+						{{item.profile.timestamp}}</div>
 					<div class="col-md-2">
-						{{item.cost}}</div>
+						{{item.profile.cost}}</div>
                     </div>
                 <hr>
                 </div>

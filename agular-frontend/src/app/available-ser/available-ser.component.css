@@ -3,7 +3,12 @@
     
 }
 
-
+.custom-showmore:hover{
+    background-color: rgba(0, 96, 199, 0.932);
+    cursor: pointer;
+    color:white;
+    text-decoration:underline;
+}
 .col-bg-1{
 
     width: 600px;

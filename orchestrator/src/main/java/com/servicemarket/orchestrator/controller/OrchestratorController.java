@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.servicemarket.orchestrator.dto.Profile;
 import com.servicemarket.orchestrator.dto.Service;
-
+import com.servicemarket.orchestrator.dto.UpdatedProfile;
 import com.servicemarket.orchestrator.dto.ViewProfile;
 import com.servicemarket.orchestrator.service.OrchestratorService;
 
@@ -71,12 +72,15 @@ public class OrchestratorController {
 		if(transactionId.equals("none")) {
 			return "some error has occured while payment";
 		}
+		System.out.println("check-1");
 		profile.setCost(mainService.getServiceById(serviceId).getCost());
 		profile.setCustomerId(customerId);
 		profile.setServiceId(serviceId);
+		System.out.println("check-2");
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		profile.setTimestamp(ts.toString());
 		profile.setTransactionId(transactionId);
+		System.out.println("check-3");
 		return mainService.addTransaction(profile);
 	}
 	
@@ -92,5 +96,10 @@ public class OrchestratorController {
 	@RequestMapping("/viewProfile/{customerId}")
 	ViewProfile profileOfCustomer(@PathVariable Integer customerId) {
 		return mainService.checkProfile(customerId);
+	}
+	
+	@RequestMapping("/viewPro/{customerId}")
+	UpdatedProfile viewPro(@PathVariable Integer customerId) {
+		return mainService.getProfile(customerId);
 	}
 }

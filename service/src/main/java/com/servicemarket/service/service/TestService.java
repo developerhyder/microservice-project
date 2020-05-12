@@ -1,7 +1,13 @@
 package com.servicemarket.service.service;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.servicemarket.service.interfaces.ServiceInterface;
 import com.servicemarket.service.interfaces.ServiceRepository;
 
@@ -23,9 +29,13 @@ public class TestService implements ServiceInterface {
 		repo.save(srv);
 		return "Service Added!";
 	}
+	public Optional<com.servicemarket.service.dto.Service> stillWorks(Integer serviceId){
+		return Optional.empty();
+	}
+	@HystrixCommand(fallbackMethod="stillWorks")
 	@Override
-	public com.servicemarket.service.dto.Service getServiceById(Integer serviceId) {
-		return repo.findById(serviceId).get();
+	public Optional<com.servicemarket.service.dto.Service> getServiceById(Integer serviceId) {
+		return repo.findById(serviceId);
 	}
 	@Override
 	public String updateService(com.servicemarket.service.dto.Service srv) {
@@ -38,4 +48,8 @@ public class TestService implements ServiceInterface {
 		return repo.findAll();
 	}
 	
+	@Override
+	public  List<com.servicemarket.service.dto.Service> getByServiceName(String serviceName) {
+		return repo.findByServiceName(serviceName);
+	}
 }

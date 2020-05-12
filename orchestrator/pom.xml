@@ -29,6 +29,12 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		    <version>2.1.5.RELEASE</version>
+		</dependency>
 		<dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

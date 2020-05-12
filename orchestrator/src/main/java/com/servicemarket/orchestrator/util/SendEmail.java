@@ -36,7 +36,7 @@ public class SendEmail {
 
            protected PasswordAuthentication getPasswordAuthentication() {
 
-               return new PasswordAuthentication("sender@gmail.com", "**********");
+               return new PasswordAuthentication("xyz@gmail.com", "*******");
 
            }
 
