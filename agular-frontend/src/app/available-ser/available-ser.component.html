@@ -18,6 +18,7 @@
       <div class="col-md-4 bg-light" style="padding: 20px; width:300px;">
         <h4> {{service.name}}</h4>
         <p>{{service.description}} </p>
+        <p>Rs. {{service.cost}}/-</p>
         <!-- <button onclick="window.location.href='https://w3docs.com';" >Click Here</button> -->
         <div *ngIf="!getCustomerId()">
           <button class="btn btn-primary"  onclick="window.location.href='#signin';" mat-stroked-button (click)="showAlertNotification()" >Hire</button  >

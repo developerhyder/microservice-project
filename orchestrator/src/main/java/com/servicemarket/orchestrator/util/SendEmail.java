@@ -11,13 +11,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
-	public static String send(String email, String msg,int serviceId,String name, double amnt, String serviceName){
+	public static String send(String email, String msg,int serviceId,String name, double amnt, String serviceName, String address){
 		
 		 // Recipient's email ID needs to be mentioned.
        String to = email;
 
        // Sender's email ID needs to be mentioned
-       String from = "developerhyder@gmail.com";
+       String from = "someone@gmail.com";
 
        // Assuming you are sending email from through gmails smtp
        String host = "smtp.gmail.com";
@@ -36,7 +36,7 @@ public class SendEmail {
 
            protected PasswordAuthentication getPasswordAuthentication() {
 
-               return new PasswordAuthentication("xyz@gmail.com", "*******");
+               return new PasswordAuthentication("somename@gmail.com", "**************");
 
            }
 
@@ -60,7 +60,7 @@ public class SendEmail {
 
            // Now set the actual message
            String body = "Hi "+name+", \n\nThank you for buying our service. Our customer executive will get in touch with you very soon."
-           			+"\n\nDetails:\n\nService id: "+serviceId+"\n\nService Name: "+serviceName+"\n\nAmount Paid: "+amnt+"\n\ntransaction id: "+msg+"\n\nhave a good day\n\n";
+           			+"\n\nDetails:\n\nService id: "+serviceId+"\n\nService Name: "+serviceName+"\n\nAmount Paid: "+amnt+"\n\ntransaction id: "+msg+"\n\nShipping address: "+address+"\n\nhave a good day\n\n";
            message.setText(body);
 
            // Send message

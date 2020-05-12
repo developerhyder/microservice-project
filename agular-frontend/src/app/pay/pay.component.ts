@@ -58,15 +58,18 @@ export class PayComponent implements AfterViewChecked {
     console.log(payment.state+"||||"+payment.id);
     if(payment.state.indexOf("approved")!= -1){
       console.log("success");
-      this.addTransaction(payment.id);
+      var address=""+payment.payer.payer_info.shipping_address.city+" Line: "+payment.payer.payer_info.shipping_address.line1+" pin: "+ payment.payer.payer_info.shipping_address.postal_code;
+      this.addTransaction(payment.id, address);
+      console.log("address"+ payment.payer.payer_info.shipping_address.city+payment.payer.payer_info.shipping_address.line1);
+
     }else{
       console.log("failed");
     }
   }
-  addTransaction(val){
+  addTransaction(val, address){
     this.beforePayment = false;
     const options = {responseType: 'text' as 'text'};
-      let obs = this.httpRef.get("http://localhost:5000/buy/"+val+"/"+this.serviceId+"/"+this.customerId,options);
+      let obs = this.httpRef.get("http://localhost:5000/buy/"+val+"/"+this.serviceId+"/"+this.customerId+"/"+address,options);
       obs.subscribe((responseBack)=>
         this.processBuy(responseBack)
       );

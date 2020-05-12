@@ -60,8 +60,11 @@
                 <div class="col-md-4 align-middle">
                   <p>{{item.name}}</p>
                 </div>
-                <div class="col-md-6 align-middle">
+                <div class="col-md-4 align-middle">
                   <p>{{item.description}}</p>
+                </div>
+                <div class="col-md-2 align-middle">
+                  <p>Rs. {{item.cost}}/-</p>
                 </div>
                 <div class="col-md-1">
                   <button class="btn btn-primary"  (click)="processValues(item.serviceId, item.cost)">Hire</button>
@@ -82,6 +85,7 @@
           
         </div>
       </div>
+      
       <div class="cmp container-fluid" >
         <div class="row">
           <div class="col"><app-sign-in></app-sign-in></div>

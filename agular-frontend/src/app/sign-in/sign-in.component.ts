@@ -13,7 +13,8 @@ export class SignInComponent implements OnInit {
 
   isSignIn: boolean = false;
   isSignUp: boolean = false;
-  
+  clickedsignup: boolean = false;
+
   showAlertinLogin: boolean = false;
   messageLogin:string;
 
@@ -36,6 +37,7 @@ export class SignInComponent implements OnInit {
   }
   hide(){
     this.showAlertinLogin=false;
+    this.showAlert=false;
     this.isSignIn=false;
     this.isSignUp=false;
   }
@@ -100,6 +102,7 @@ export class SignInComponent implements OnInit {
     if (val1.invalid || val2.invalid){
       console.log("validation failed");
     }else{
+      this.clickedsignup = true;
       console.log("validation was successfull");
       this.post={
         email:val1.viewModel,
@@ -123,6 +126,7 @@ export class SignInComponent implements OnInit {
     if(responseBack.indexOf("otp was sent to") != -1){
       console.log(responseBack);
       this.isSignUp=false;
+      this.clickedsignup=false;
       this._snackBar.open(responseBack, "ok",
       {
         duration:3000,

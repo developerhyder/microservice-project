@@ -23,7 +23,7 @@ public interface OrchestratorInterface {
 	List<Service> getAllServices();
 	String updateService(Service service);
 	
-	public String addTransaction(Profile profile);
+	public String addTransaction(Profile profile, String address);
 	public List<Profile> retrievTransactions();
 	public List<Profile> getTransactionById(Integer customerId);
 	

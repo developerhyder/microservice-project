@@ -72,14 +72,14 @@ public class OrchestratorService implements OrchestratorInterface{
 	}
 
 	@Override
-	public String addTransaction(Profile profile) {
+	public String addTransaction(Profile profile, String address) {
 		String url="http://localhost:5002/profile/addtransaction";
 		//get transaction by id
 		Customer customer = new Customer();
 		com.servicemarket.orchestrator.dto.Service ser = new com.servicemarket.orchestrator.dto.Service();
 		ser = getServiceById(profile.getServiceId());
 		customer = getCustomerById(profile.getCustomerId());
-		SendEmail.send(customer.getEmail(), profile.getTransactionId(), profile.getServiceId(), customer.getName(), profile.getCost(), ser.getName());
+		SendEmail.send(customer.getEmail(), profile.getTransactionId(), profile.getServiceId(), customer.getName(), profile.getCost(), ser.getName(), address);
 		return restTemplate.postForObject(url, profile, String.class);
 	}
 
