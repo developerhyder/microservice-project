@@ -14,7 +14,7 @@ ng add @angular/material
 3. You will need a client key for the paypal to work
 
 <h3>Architecture:</h3>
-![work](screenshot/orchestrator.png)
+![work](screenshot/homescreen.PNG)
 
 <h3>Screenshots</h3>
 
